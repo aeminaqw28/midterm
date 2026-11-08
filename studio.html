@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lis | The Studio: shop pieces and commission a design</title>
+  <meta name="description" content="Shop era pieces from four wardrobes, pick a Lis designer and send your own reference photos for a custom design.">
+  <link rel="icon" href="img/mark-gold.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..800;1,6..96,500..800&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/lab.css" rel="stylesheet">
+  <link href="css/studio.css" rel="stylesheet">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-xl" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html" aria-label="Lis, home">
+          <img src="img/mark-gold.svg" alt="" width="30" height="20">
+          <span>Lis</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteMenu" aria-controls="siteMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="siteMenu">
+          <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Style Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="game.html">Look Game</a></li>
+          <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--studio active" href="studio.html" aria-current="page">Studio</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--account" href="account.html">Account</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- jQuery notification banner: slides down after a successful order or request -->
+  <div id="notice" class="notice" role="status" aria-live="polite">
+    <div class="container notice__inner">
+      <p id="noticeText" class="notice__text"></p>
+      <button type="button" class="notice__close" id="noticeClose" aria-label="Close notification">&times;</button>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-head studio-head">
+      <div class="container">
+        <div class="row align-items-end gy-4">
+          <div class="col-12 col-lg-7">
+            <p class="eyebrow">The Lis Atelier</p>
+            <h1 class="page-head__title">Shop a piece, or <em>commission</em> your own</h1>
+            <p class="page-head__lead">Twelve pieces from four wardrobes, cut to order in Almaty. Fill your bag, or send us your reference photos and choose the designer who will draw it.</p>
+            <div class="hero__actions">
+              <a class="btn btn-lis btn-lis--shine js-scroll" href="#shop">Shop the pieces</a>
+              <a class="btn btn-lis-outline js-scroll" href="#commission">Commission a design</a>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5">
+            <ul class="studio-facts">
+              <li><strong id="factPieces">12</strong> pieces in stock</li>
+              <li><strong id="factDesigners">8</strong> studio designers</li>
+              <li><strong>14</strong> days minimum for a custom piece</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 1. SHOP ============ -->
+    <section id="shop" class="section section--flush shop" aria-labelledby="shop-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">01 &middot; Ready to cut</p>
+          <h2 id="shop-title" class="section__title">Shop the pieces</h2>
+        </header>
+
+        <div class="shop-toolbar" role="search" aria-label="Filter pieces">
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-md-5">
+              <label for="shopSearch" class="form-label">Search pieces</label>
+              <input id="shopSearch" type="search" class="form-control" placeholder="Try: velvet, blazer, 1920s" autocomplete="off">
+            </div>
+            <div class="col-12 col-md-4">
+              <label for="shopSort" class="form-label">Sort by</label>
+              <select id="shopSort" class="form-select">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="decade-asc">Decade: oldest first</option>
+                <option value="decade-desc">Decade: newest first</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-3">
+              <p class="shop-count mb-0" id="shopCount" aria-live="polite"></p>
+            </div>
+            <div class="col-12">
+              <fieldset>
+                <legend class="form-label">Wardrobe</legend>
+                <div class="pill-group" id="wardrobeFilter"></div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gy-5 gx-lg-5">
+          <div class="col-12 col-lg-8">
+            <div id="pieceGrid" class="row row-cols-2 row-cols-xl-3 g-3 g-md-4"></div>
+            <div id="shopEmpty" class="empty-state" hidden>
+              <img src="img/ornament-ink.svg" alt="" width="120" height="14">
+              <h3 class="empty-state__title">Nothing found in the wardrobe</h3>
+              <p id="shopEmptyText">No piece matches your search.</p>
+              <button type="button" class="btn btn-lis" id="shopReset">Show all pieces</button>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-4">
+            <aside class="bag" id="bag" aria-labelledby="bag-title">
+              <h2 id="bag-title" class="bag__title">Your bag <span class="bag__count" id="bagCount">0</span></h2>
+              <ul class="bag__list" id="bagList"></ul>
+              <p class="bag__empty" id="bagEmpty">Your bag is empty. Add a piece to start a look.</p>
+              <dl class="bag__sums" id="bagSums">
+                <div><dt>Subtotal</dt><dd id="bagSubtotal">$0.00</dd></div>
+                <div><dt>Look discount <small>(3+ pieces, 10%)</small></dt><dd id="bagDiscount">&minus;$0.00</dd></div>
+                <div><dt>Tailoring &amp; delivery</dt><dd id="bagDelivery">$0.00</dd></div>
+                <div class="bag__total"><dt>Total</dt><dd id="bagTotal">$0.00</dd></div>
+              </dl>
+              <p class="bag__hint" id="bagHint"></p>
+              <button type="button" class="btn btn-lis btn-lis--shine w-100" id="checkoutToggle" aria-expanded="false" aria-controls="checkout" disabled>Place imagined order</button>
+
+              <form id="checkout" class="checkout" novalidate aria-label="Checkout">
+                <h3 class="checkout__title">Delivery details</h3>
+                <div class="mb-3">
+                  <label for="coName" class="form-label">Full name</label>
+                  <input id="coName" type="text" class="form-control" autocomplete="name" aria-describedby="coName-error">
+                  <p id="coName-error" class="field-error"></p>
+                </div>
+                <div class="mb-3">
+                  <label for="coEmail" class="form-label">Email</label>
+                  <input id="coEmail" type="email" class="form-control" autocomplete="email" aria-describedby="coEmail-error">
+                  <p id="coEmail-error" class="field-error"></p>
+                </div>
+                <div class="mb-3">
+                  <label for="coPhone" class="form-label">Phone</label>
+                  <input id="coPhone" type="tel" class="form-control" placeholder="+7 701 234 5678" autocomplete="tel" aria-describedby="coPhone-hint coPhone-error">
+                  <p id="coPhone-hint" class="field-hint">Kazakhstan number, starting with +7 or 8.</p>
+                  <p id="coPhone-error" class="field-error"></p>
+                </div>
+                <div class="mb-3">
+                  <label for="coCity" class="form-label">City</label>
+                  <select id="coCity" class="form-select" aria-describedby="coCity-error">
+                    <option value="">Choose a city</option>
+                    <option value="almaty" data-fee="0">Almaty (studio pick-up, free)</option>
+                    <option value="astana" data-fee="12">Astana (+$12)</option>
+                    <option value="shymkent" data-fee="12">Shymkent (+$12)</option>
+                    <option value="other" data-fee="20">Other city in Qazaqstan (+$20)</option>
+                  </select>
+                  <p id="coCity-error" class="field-error"></p>
+                </div>
+                <div class="mb-3">
+                  <label for="coAddress" class="form-label">Street address</label>
+                  <input id="coAddress" type="text" class="form-control" autocomplete="street-address" aria-describedby="coAddress-error">
+                  <p id="coAddress-error" class="field-error"></p>
+                </div>
+                <button type="submit" class="btn btn-lis w-100">Confirm order</button>
+              </form>
+              <div id="orderResult" class="result" role="status"></div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. COMMISSION ============ -->
+    <section id="commission" class="section commission" aria-labelledby="commission-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow eyebrow--gold">02 &middot; Made for you</p>
+          <h2 id="commission-title" class="section__title">Commission a custom design</h2>
+          <p class="commission__lead">Upload the photos that inspire you, choose a designer and tell us how it should fit. Your designer sends a first sketch within five days.</p>
+        </header>
+
+        <div class="row gy-5 gx-lg-5">
+          <div class="col-12 col-lg-8">
+            <form id="requestForm" class="quiz request" novalidate>
+              <p id="requestSummary" class="error-summary" role="alert" tabindex="-1"></p>
+
+              <fieldset class="request__step">
+                <legend><span class="request__num">1</span> Choose your designer</legend>
+                <div class="designer-filter pill-group" id="designerFilter"></div>
+                <div id="designerGrid" class="row row-cols-1 row-cols-sm-2 g-3" role="radiogroup" aria-describedby="designer-error"></div>
+                <p id="designer-error" class="field-error"></p>
+              </fieldset>
+
+              <fieldset class="request__step">
+                <legend><span class="request__num">2</span> About you</legend>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label for="rqName" class="form-label">Full name</label>
+                    <input id="rqName" name="name" type="text" class="form-control" autocomplete="name" aria-describedby="rqName-error">
+                    <p id="rqName-error" class="field-error"></p>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="rqEmail" class="form-label">Email</label>
+                    <input id="rqEmail" name="email" type="email" class="form-control" autocomplete="email" aria-describedby="rqEmail-error">
+                    <p id="rqEmail-error" class="field-error"></p>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="rqPhone" class="form-label">Phone</label>
+                    <input id="rqPhone" name="phone" type="tel" class="form-control" placeholder="+7 701 234 5678" autocomplete="tel" aria-describedby="rqPhone-error">
+                    <p id="rqPhone-error" class="field-error"></p>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="rqDeadline" class="form-label">Needed by</label>
+                    <input id="rqDeadline" name="deadline" type="date" class="form-control" aria-describedby="rqDeadline-hint rqDeadline-error">
+                    <p id="rqDeadline-hint" class="field-hint">At least 14 days from today. Under 30 days adds a 25% rush fee.</p>
+                    <p id="rqDeadline-error" class="field-error"></p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="request__step">
+                <legend><span class="request__num">3</span> The piece</legend>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label for="rqGarment" class="form-label">Garment</label>
+                    <select id="rqGarment" name="garment" class="form-select" aria-describedby="rqGarment-error"></select>
+                    <p id="rqGarment-error" class="field-error"></p>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="rqSize" class="form-label">Size</label>
+                    <select id="rqSize" name="size" class="form-select" aria-describedby="rqSize-error">
+                      <option value="">Choose a size</option>
+                      <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option>
+                      <option value="custom">Custom measurements</option>
+                    </select>
+                    <p id="rqSize-error" class="field-error"></p>
+                  </div>
+                  <div class="col-12" id="measureWrap" hidden>
+                    <div class="row g-3">
+                      <div class="col-4">
+                        <label for="rqBust" class="form-label">Bust, cm</label>
+                        <input id="rqBust" type="number" inputmode="numeric" class="form-control" min="60" max="160" aria-describedby="rqBust-error">
+                        <p id="rqBust-error" class="field-error"></p>
+                      </div>
+                      <div class="col-4">
+                        <label for="rqWaist" class="form-label">Waist, cm</label>
+                        <input id="rqWaist" type="number" inputmode="numeric" class="form-control" min="45" max="150" aria-describedby="rqWaist-error">
+                        <p id="rqWaist-error" class="field-error"></p>
+                      </div>
+                      <div class="col-4">
+                        <label for="rqHip" class="form-label">Hip, cm</label>
+                        <input id="rqHip" type="number" inputmode="numeric" class="form-control" min="60" max="170" aria-describedby="rqHip-error">
+                        <p id="rqHip-error" class="field-error"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="rqBudget" class="form-label">Your budget, $</label>
+                    <input id="rqBudget" name="budget" type="number" inputmode="numeric" class="form-control" min="0" step="10" aria-describedby="rqBudget-hint rqBudget-error">
+                    <p id="rqBudget-hint" class="field-hint">Must cover the estimate shown in the summary.</p>
+                    <p id="rqBudget-error" class="field-error"></p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="request__step">
+                <legend><span class="request__num">4</span> Your idea</legend>
+                <div class="mb-3">
+                  <label for="rqPhotos" class="form-label">Reference photos (1 to 3 images, up to 5 MB each)</label>
+                  <input id="rqPhotos" name="photos" type="file" class="dropzone__input" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="rqPhotos-error">
+                  <label class="dropzone" for="rqPhotos" id="dropzone" aria-hidden="true">
+                    <span class="dropzone__icon">&#8679;</span>
+                    <span class="dropzone__text"><strong>Choose photos</strong> or drop them here</span>
+                    <span class="dropzone__sub">JPG, PNG or WEBP</span>
+                  </label>
+                  <ul class="thumbs" id="thumbs" aria-label="Selected reference photos"></ul>
+                  <p id="rqPhotos-error" class="field-error"></p>
+                </div>
+                <div class="mb-3">
+                  <label for="rqNotes" class="form-label">Describe your idea</label>
+                  <textarea id="rqNotes" name="notes" rows="4" class="form-control" maxlength="500" placeholder="For example: a 1950s bar jacket in navy velvet with koshkar-muiz embroidery on the cuffs, for my sister's toi." aria-describedby="rqNotes-count rqNotes-error"></textarea>
+                  <p class="field-hint text-end" id="rqNotes-count">0 / 500</p>
+                  <p id="rqNotes-error" class="field-error"></p>
+                </div>
+                <div class="form-check">
+                  <input id="rqConsent" type="checkbox" class="form-check-input" aria-describedby="rqConsent-error">
+                  <label for="rqConsent" class="form-check-label">I understand the first sketch is free and I only pay if I approve it</label>
+                </div>
+                <p id="rqConsent-error" class="field-error"></p>
+              </fieldset>
+
+              <button type="submit" class="btn btn-lis btn-lis--shine btn-lg quiz__submit">Send my design request</button>
+            </form>
+          </div>
+
+          <div class="col-12 col-lg-4">
+            <aside class="ticket ticket--preview estimate" aria-labelledby="estimate-title">
+              <h2 id="estimate-title" class="ticket__title">Your estimate</h2>
+              <ul class="ticket__list">
+                <li><span class="ticket__label">Designer</span> <span id="esDesigner">Not chosen</span></li>
+                <li><span class="ticket__label">Garment</span> <span id="esGarment">Not chosen</span></li>
+                <li><span class="ticket__label">Size</span> <span id="esSize">&mdash;</span></li>
+                <li><span class="ticket__label">Photos</span> <span id="esPhotos">0</span></li>
+                <li><span class="ticket__label">Rush fee</span> <span id="esRush">No</span></li>
+              </ul>
+              <p class="ticket__total">Estimate <strong id="esTotal">$0</strong></p>
+              <p class="field-hint mb-0">Designer fee + garment base price, &times;1.25 for rush orders.</p>
+            </aside>
+            <div id="requestResult" class="result" role="status"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. FAQ (jQuery accordion) ============ -->
+    <section class="section section--tint" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">03 &middot; Before you order</p>
+          <h2 id="faq-title" class="section__title">How the atelier works</h2>
+        </header>
+        <div class="lis-faq" id="faq">
+          <div class="lis-faq__item">
+            <h3 class="lis-faq__q"><button type="button" aria-expanded="false" aria-controls="faq1">How long does a custom piece take?</button></h3>
+            <div class="lis-faq__a" id="faq1"><p>The first sketch arrives in five days. After you approve it we cut a toile, fit it once in Almaty or by video call, and finish the piece. Most commissions take three to five weeks; anything under 30 days is a rush order.</p></div>
+          </div>
+          <div class="lis-faq__item">
+            <h3 class="lis-faq__q"><button type="button" aria-expanded="false" aria-controls="faq2">Do you copy a designer's runway piece?</button></h3>
+            <div class="lis-faq__a" id="faq2"><p>No. Our designers work <em>in the spirit</em> of an era: the drop waist of the twenties, the padded shoulder of the eighties, the ram's-horn curl of Kazakh embroidery. Your reference photos guide the mood; the cut is our own.</p></div>
+          </div>
+          <div class="lis-faq__item">
+            <h3 class="lis-faq__q"><button type="button" aria-expanded="false" aria-controls="faq3">What does the look discount mean?</button></h3>
+            <div class="lis-faq__a" id="faq3"><p>Buy three or more pieces in one order and the whole bag is 10% off. A full look is how Lis was meant to be worn, so we reward it.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Phone/tablet shortcut to the bag (hidden on desktop, where the bag is sticky) -->
+  <a href="#bag" class="bag-fab js-scroll" id="bagFab" hidden>Bag <span id="bagFabCount">0</span> &middot; <span id="bagFabTotal">$0.00</span></a>
+
+  <!-- jQuery lightbox: the story behind each piece -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle" hidden>
+    <div class="lightbox__panel">
+      <button type="button" class="lightbox__close" id="lbClose" aria-label="Close story">&times;</button>
+      <div class="row g-4 align-items-center">
+        <div class="col-12 col-md-5">
+          <figure class="arch" id="lbArch"><img id="lbImg" src="img/paris-1920s.svg" alt="" width="220" height="510"></figure>
+        </div>
+        <div class="col-12 col-md-7">
+          <p class="look__decade" id="lbEra"></p>
+          <h2 class="lightbox__title" id="lbTitle"></h2>
+          <p id="lbStory"></p>
+          <p class="lightbox__price"><strong id="lbPrice"></strong></p>
+          <button type="button" class="btn btn-lis" id="lbAdd">Add to bag</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <p class="footer-brand"><img src="img/mark-gold.svg" alt="" width="30" height="20"> Lis</p>
+          <p class="footer-text">A fictional styling studio rooted in Kazakhstan. Outfits for every era, from Paris to the steppe.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="footer-title">Pages</h2>
+          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lookbook.html">Lookbook</a></li><li><a href="quiz.html">Style Quiz</a></li><li><a href="game.html">Look Game</a></li><li><a href="planner.html">Planner</a></li><li><a href="booking.html">Booking</a></li><li><a href="studio.html">Studio</a></li><li><a href="account.html">Account</a></li></ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h2 class="footer-title">Wardrobes</h2>
+          <ul class="footer-links">
+            <li><a href="lookbook.html#paris">Paris</a></li>
+            <li><a href="lookbook.html#europe">Europe</a></li>
+            <li><a href="lookbook.html#america">America</a></li>
+            <li><a href="lookbook.html#kazakh">Qazaqstan</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-credits">Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project. Studio designers are fictional characters. Fonts: Bodoni Moda and Jost from Google Fonts. Built with HTML, CSS, JavaScript, jQuery and Bootstrap 5.3.</p>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/studio-data.js"></script>
+  <script src="js/studio.js"></script>
+</body>
+</html>

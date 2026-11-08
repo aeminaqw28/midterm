@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lis | Your account</title>
+  <meta name="description" content="Create a Lis account to save looks, keep your orders and design requests, and track your best game score.">
+  <link rel="icon" href="img/mark-gold.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..800;1,6..96,500..800&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/lab.css" rel="stylesheet">
+  <link href="css/studio.css" rel="stylesheet">
+  <link href="css/account.css" rel="stylesheet">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-xl" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html" aria-label="Lis, home">
+          <img src="img/mark-gold.svg" alt="" width="30" height="20">
+          <span>Lis</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteMenu" aria-controls="siteMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="siteMenu">
+          <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+          <li class="nav-item"><a class="nav-link" href="quiz.html">Style Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="game.html">Look Game</a></li>
+          <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--studio" href="studio.html">Studio</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--account active" href="account.html" aria-current="page">Account</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ GUEST VIEW: sign up / log in ============ -->
+    <section id="guestView" class="section account-guest" aria-labelledby="guest-title" hidden>
+      <div class="container">
+        <div class="row gy-5 gx-lg-5 align-items-start">
+          <div class="col-12 col-lg-5">
+            <p class="eyebrow">Members' wardrobe</p>
+            <h1 id="guest-title" class="page-head__title">Your Lis <em>account</em></h1>
+            <p class="page-head__lead">One place for everything you love at Lis.</p>
+            <ul class="perks">
+              <li><strong>Save looks</strong> from the fashion timeline with one tap.</li>
+              <li><strong>Keep your orders</strong> and custom design requests from the Studio.</li>
+              <li><strong>Track your best score</strong> in the Look Game and your style quiz match.</li>
+              <li><strong>Skip typing:</strong> your name, email and phone fill in for you.</li>
+            </ul>
+            <div class="guest-arches" aria-hidden="true">
+              <figure class="arch arch--paris"><img src="img/paris-1950s.svg" alt="" width="220" height="510"></figure>
+              <figure class="arch arch--kazakh"><img src="img/kazakh-modern.svg" alt="" width="220" height="510"></figure>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-7">
+            <div class="auth">
+              <div class="auth__tabs" role="tablist" aria-label="Account">
+                <button type="button" class="auth__tab is-active" id="tab-signup" role="tab" aria-selected="true" aria-controls="signupPanel">Create account</button>
+                <button type="button" class="auth__tab" id="tab-login" role="tab" aria-selected="false" aria-controls="loginPanel" tabindex="-1">Log in</button>
+              </div>
+
+              <!-- Sign up -->
+              <div id="signupPanel" class="auth__panel" role="tabpanel" aria-labelledby="tab-signup">
+                <form id="signupForm" novalidate>
+                  <p id="signupSummary" class="error-summary" role="alert" tabindex="-1"></p>
+                  <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                      <label for="suName" class="form-label">Full name</label>
+                      <input id="suName" type="text" class="form-control" autocomplete="name" aria-describedby="suName-error">
+                      <p id="suName-error" class="field-error"></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="suEmail" class="form-label">Email</label>
+                      <input id="suEmail" type="email" class="form-control" autocomplete="email" aria-describedby="suEmail-error">
+                      <p id="suEmail-error" class="field-error"></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="suPhone" class="form-label">Phone</label>
+                      <input id="suPhone" type="tel" class="form-control" placeholder="+7 701 234 5678" autocomplete="tel" aria-describedby="suPhone-error">
+                      <p id="suPhone-error" class="field-error"></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="suBirth" class="form-label">Date of birth</label>
+                      <input id="suBirth" type="date" class="form-control" autocomplete="bday" aria-describedby="suBirth-hint suBirth-error">
+                      <p id="suBirth-hint" class="field-hint">Members must be 14 or older.</p>
+                      <p id="suBirth-error" class="field-error"></p>
+                    </div>
+                    <div class="col-12">
+                      <label for="suWardrobe" class="form-label">Favourite wardrobe</label>
+                      <select id="suWardrobe" class="form-select" aria-describedby="suWardrobe-error">
+                        <option value="">Choose one</option>
+                        <option value="paris">Paris</option>
+                        <option value="europe">Europe</option>
+                        <option value="america">America</option>
+                        <option value="kazakh">Qazaqstan</option>
+                      </select>
+                      <p id="suWardrobe-error" class="field-error"></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="suPassword" class="form-label">Password</label>
+                      <div class="pw">
+                        <input id="suPassword" type="password" class="form-control" autocomplete="new-password" aria-describedby="pwMeterText suPassword-error">
+                        <button type="button" class="pw__toggle" data-toggle-pw="suPassword" aria-label="Show password" aria-pressed="false">Show</button>
+                      </div>
+                      <div class="meter" aria-hidden="true"><span class="meter__bar" id="pwMeter"></span></div>
+                      <p class="field-hint" id="pwMeterText">Use 8+ characters with a capital letter, a number and a symbol.</p>
+                      <p id="suPassword-error" class="field-error"></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="suConfirm" class="form-label">Repeat password</label>
+                      <div class="pw">
+                        <input id="suConfirm" type="password" class="form-control" autocomplete="new-password" aria-describedby="suConfirm-error">
+                        <button type="button" class="pw__toggle" data-toggle-pw="suConfirm" aria-label="Show repeated password" aria-pressed="false">Show</button>
+                      </div>
+                      <p id="suConfirm-error" class="field-error"></p>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input id="suTerms" type="checkbox" class="form-check-input" aria-describedby="suTerms-error">
+                        <label for="suTerms" class="form-check-label">I understand this demo account lives only in this browser</label>
+                      </div>
+                      <p id="suTerms-error" class="field-error"></p>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-lis btn-lis--shine btn-lg quiz__submit">Create my account</button>
+                </form>
+              </div>
+
+              <!-- Log in -->
+              <div id="loginPanel" class="auth__panel" role="tabpanel" aria-labelledby="tab-login" hidden>
+                <form id="loginForm" novalidate>
+                  <div class="mb-3">
+                    <label for="liEmail" class="form-label">Email</label>
+                    <input id="liEmail" type="email" class="form-control" autocomplete="email" aria-describedby="liEmail-error">
+                    <p id="liEmail-error" class="field-error"></p>
+                  </div>
+                  <div class="mb-3">
+                    <label for="liPassword" class="form-label">Password</label>
+                    <div class="pw">
+                      <input id="liPassword" type="password" class="form-control" autocomplete="current-password" aria-describedby="liPassword-error">
+                      <button type="button" class="pw__toggle" data-toggle-pw="liPassword" aria-label="Show password" aria-pressed="false">Show</button>
+                    </div>
+                    <p id="liPassword-error" class="field-error"></p>
+                  </div>
+                  <button type="submit" class="btn btn-lis btn-lg">Log in</button>
+                  <p class="field-hint mt-3 mb-0">No account yet? <button type="button" class="link-btn" id="toSignup">Create one in a minute</button>.</p>
+                </form>
+              </div>
+            </div>
+            <p class="demo-note">Demo only: accounts are saved in this browser's local storage, never sent anywhere. Please don't reuse a real password.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEMBER VIEW: dashboard ============ -->
+    <div id="memberView" hidden>
+      <section class="page-head member-head">
+        <div class="container">
+          <div class="row align-items-end gy-4">
+            <div class="col-12 col-md-8">
+              <p class="eyebrow" id="memberSince"></p>
+              <h1 class="page-head__title">Salem, <em id="memberName"></em></h1>
+              <p class="page-head__lead" id="memberLead"></p>
+            </div>
+            <div class="col-12 col-md-4 text-md-end">
+              <button type="button" class="btn btn-lis-outline" id="logoutBtn">Log out</button>
+            </div>
+          </div>
+          <ul class="stats" id="stats" aria-label="Your numbers"></ul>
+        </div>
+      </section>
+
+      <section class="section section--flush" aria-labelledby="saved-title">
+        <div class="container">
+          <header class="section__head d-flex flex-wrap justify-content-between align-items-end gap-3">
+            <div>
+              <p class="eyebrow">Saved looks</p>
+              <h2 id="saved-title" class="section__title">Your wardrobe board</h2>
+            </div>
+            <a class="btn btn-lis-outline" href="lookbook.html#timeline">Find more looks</a>
+          </header>
+          <div id="savedGrid" class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-3 g-md-4"></div>
+          <div id="savedEmpty" class="empty-state" hidden>
+            <img src="img/ornament-ink.svg" alt="" width="120" height="14">
+            <h3 class="empty-state__title">No saved looks yet</h3>
+            <p>Tap &ldquo;Save look&rdquo; on any card in the fashion timeline and it lands here.</p>
+            <a class="btn btn-lis" href="lookbook.html#timeline">Open the timeline</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--tint" aria-labelledby="history-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow">Studio history</p>
+            <h2 id="history-title" class="section__title">Orders and design requests</h2>
+          </header>
+          <div class="row gy-4 gx-lg-5">
+            <div class="col-12 col-lg-6">
+              <h3 class="list-title">Orders <span class="column__count" id="ordersCount">0</span></h3>
+              <ul class="records" id="ordersList"></ul>
+              <p class="records__empty" id="ordersEmpty">No orders yet. <a href="studio.html#shop">Visit the Studio shop</a>.</p>
+            </div>
+            <div class="col-12 col-lg-6">
+              <h3 class="list-title">Design requests <span class="column__count" id="requestsCount">0</span></h3>
+              <ul class="records" id="requestsList"></ul>
+              <p class="records__empty" id="requestsEmpty">No design requests yet. <a href="studio.html#commission">Commission a piece</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="profile-title">
+        <div class="container">
+          <div class="row gy-4 gx-lg-5">
+            <div class="col-12 col-lg-5">
+              <p class="eyebrow">Profile</p>
+              <h2 id="profile-title" class="section__title">Your details</h2>
+              <p>These fill in the Studio forms for you. Your email is your login and cannot be changed.</p>
+            </div>
+            <div class="col-12 col-lg-7">
+              <form id="profileForm" class="quiz" novalidate>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label for="pfName" class="form-label">Full name</label>
+                    <input id="pfName" type="text" class="form-control" autocomplete="name" aria-describedby="pfName-error">
+                    <p id="pfName-error" class="field-error"></p>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="pfEmail" class="form-label">Email</label>
+                    <input id="pfEmail" type="email" class="form-control" readonly>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="pfPhone" class="form-label">Phone</label>
+                    <input id="pfPhone" type="tel" class="form-control" autocomplete="tel" aria-describedby="pfPhone-error">
+                    <p id="pfPhone-error" class="field-error"></p>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="pfWardrobe" class="form-label">Favourite wardrobe</label>
+                    <select id="pfWardrobe" class="form-select" aria-describedby="pfWardrobe-error">
+                      <option value="paris">Paris</option>
+                      <option value="europe">Europe</option>
+                      <option value="america">America</option>
+                      <option value="kazakh">Qazaqstan</option>
+                    </select>
+                    <p id="pfWardrobe-error" class="field-error"></p>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-lis quiz__submit">Save changes</button>
+                <p id="profileSaved" class="form-success" role="status"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <p class="footer-brand"><img src="img/mark-gold.svg" alt="" width="30" height="20"> Lis</p>
+          <p class="footer-text">A fictional styling studio rooted in Kazakhstan. Outfits for every era, from Paris to the steppe.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2 class="footer-title">Pages</h2>
+          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lookbook.html">Lookbook</a></li><li><a href="quiz.html">Style Quiz</a></li><li><a href="game.html">Look Game</a></li><li><a href="planner.html">Planner</a></li><li><a href="booking.html">Booking</a></li><li><a href="studio.html">Studio</a></li><li><a href="account.html">Account</a></li></ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h2 class="footer-title">Wardrobes</h2>
+          <ul class="footer-links">
+            <li><a href="lookbook.html#paris">Paris</a></li>
+            <li><a href="lookbook.html#europe">Europe</a></li>
+            <li><a href="lookbook.html#america">America</a></li>
+            <li><a href="lookbook.html#kazakh">Qazaqstan</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-credits">Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project. Fonts: Bodoni Moda and Jost from Google Fonts. Built with HTML, CSS, JavaScript, jQuery and Bootstrap 5.3.</p>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/looks-data.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

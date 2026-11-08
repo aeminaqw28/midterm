@@ -1,0 +1,248 @@
+/* Lis lookbook: fashion timeline */
+
+.region-nav .nav-link--timeline {
+  background: var(--grad-gold);
+}
+
+.timeline-section {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(217, 169, 58, 0.22) 0, transparent 35%),
+    var(--grad-ink);
+  color: var(--paper);
+  scroll-margin-top: calc(var(--header-h) + 3.5rem);
+}
+
+.timeline-section .section__title {
+  color: var(--gold);
+}
+
+.timeline-lead {
+  max-width: 42rem;
+  color: #e6e0d2;
+  font-size: 1.1rem;
+}
+
+.timeline-tools {
+  margin-bottom: 2.5rem;
+  padding: 1.2rem;
+  background: var(--grad-cream);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+
+.timeline-tools legend {
+  float: none;
+  width: auto;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-count {
+  font-weight: 600;
+  color: #4a4c55;
+}
+
+/* the vertical gold line with era dots */
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 2.4rem;
+  list-style: none;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.7rem;
+  width: 3px;
+  background: linear-gradient(180deg, #f6d77e, #d9a93a 50%, rgba(217, 169, 58, 0.15));
+  border-radius: 3px;
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 1.6rem;
+}
+
+.tl-item__dot {
+  position: absolute;
+  top: 1.4rem;
+  left: -2.4rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  overflow: hidden;
+  background: var(--grad-gold);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--gold);
+  color: transparent;
+  font-size: 0;
+}
+
+.tl-card {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  color: var(--ink);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.tl-card:hover,
+.tl-card:focus-within {
+  transform: translateX(4px);
+  box-shadow: -6px 6px 0 var(--gold);
+}
+
+.tl-card__fig {
+  align-self: start;
+  box-shadow: none;
+}
+
+.tl-card__title {
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.tl-card__moment {
+  margin-bottom: 0.6rem;
+  padding: 0.5rem 0.8rem;
+  background: linear-gradient(90deg, rgba(217, 169, 58, 0.25), rgba(217, 169, 58, 0));
+  border-left: 3px solid var(--gold-deep);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.tl-card__story,
+.tl-card__more {
+  margin-bottom: 0.6rem;
+}
+
+.tl-facts {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0 0 0.8rem;
+  padding: 0.8rem;
+  background: #fff;
+  border: 1.5px dashed rgba(20, 22, 28, 0.35);
+  border-radius: 0.8rem;
+  font-size: 0.92rem;
+}
+
+.tl-facts > div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0.6rem;
+}
+
+.tl-facts dt {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-top: 0.15rem;
+}
+
+.tl-facts dd {
+  margin: 0;
+}
+
+.tl-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* save (heart) button */
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.9rem;
+  background: #fff;
+  border: 2px solid var(--red);
+  border-radius: 999px;
+  color: var(--red);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.save-btn:hover {
+  background: #fff1ee;
+}
+
+.save-btn:focus-visible {
+  outline: 3px solid var(--gold-deep);
+  outline-offset: 2px;
+}
+
+.save-btn.is-saved {
+  background: var(--red);
+  color: #fff;
+}
+
+.save-btn__icon {
+  display: inline-block;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.save-btn.is-popping .save-btn__icon {
+  animation: heart-pop 0.35s ease;
+}
+
+@keyframes heart-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.6); }
+  100% { transform: scale(1); }
+}
+
+.timeline-section .empty-state {
+  color: var(--ink);
+}
+
+@media (min-width: 576px) {
+  .tl-card {
+    grid-template-columns: 9rem 1fr;
+    padding: 1.2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .timeline {
+    padding-left: 9rem;
+  }
+
+  .timeline::before {
+    left: 6.6rem;
+  }
+
+  .tl-item__dot {
+    left: -9rem;
+    width: 7.3rem;
+    height: auto;
+    padding: 0.25rem 0.5rem;
+    background: var(--grad-gold);
+    border-width: 2px;
+    border-radius: 999px;
+    box-shadow: none;
+    color: var(--ink);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .tl-card {
+    grid-template-columns: 11rem 1fr;
+    gap: 1.6rem;
+  }
+}

@@ -15,7 +15,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+    <nav class="navbar navbar-expand-xl" aria-label="Main navigation">
       <div class="container">
         <a class="navbar-brand brand" href="index.html" aria-label="Lis, home">
           <img src="img/mark-gold.svg" alt="" width="30" height="20">
@@ -29,6 +29,11 @@
           <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
           <li class="nav-item"><a class="nav-link" href="quiz.html">Style Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="game.html">Look Game</a></li>
+          <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--studio" href="studio.html">Studio</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--account" href="account.html">Account</a></li>
           </ul>
         </div>
       </div>
@@ -179,6 +184,50 @@
       </div>
     </section>
 
+    <section class="section season" aria-labelledby="season-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow eyebrow--gold">New this season</p>
+          <h2 id="season-title" class="section__title">Shop, commission, play</h2>
+        </header>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+          <div class="col">
+            <a class="season-card season-card--paris" href="studio.html#shop">
+              <span class="season-card__num">01</span>
+              <h3 class="season-card__title">The Studio shop</h3>
+              <p>Twelve era pieces cut to order in Almaty. Buy three and the whole bag is 10% off.</p>
+              <span class="season-card__go">Open the shop<span aria-hidden="true"> &rarr;</span></span>
+            </a>
+          </div>
+          <div class="col">
+            <a class="season-card season-card--kazakh" href="studio.html#commission">
+              <span class="season-card__num">02</span>
+              <h3 class="season-card__title">Commission a design</h3>
+              <p>Upload your reference photos, choose one of eight designers and get a free first sketch.</p>
+              <span class="season-card__go">Start a request<span aria-hidden="true"> &rarr;</span></span>
+            </a>
+          </div>
+          <div class="col">
+            <a class="season-card season-card--europe" href="lookbook.html#timeline">
+              <span class="season-card__num">03</span>
+              <h3 class="season-card__title">The fashion timeline</h3>
+              <p>From the 1920s flapper to the modern chapan: the story behind every look.</p>
+              <span class="season-card__go">Read the history<span aria-hidden="true"> &rarr;</span></span>
+            </a>
+          </div>
+          <div class="col">
+            <a class="season-card season-card--america" href="game.html">
+              <span class="season-card__num">04</span>
+              <h3 class="season-card__title">Earlier or later?</h3>
+              <p>Guess the decade, build a streak and multiply your score. Your best score is saved.</p>
+              <span class="season-card__go">Play the game<span aria-hidden="true"> &rarr;</span></span>
+            </a>
+          </div>
+        </div>
+        <p class="season__account"><a class="btn btn-lis btn-lis--gold" href="account.html">Create your Lis account</a> <span>Save looks, keep orders and track your scores.</span></p>
+      </div>
+    </section>
+
     <section class="cta" aria-labelledby="cta-title">
       <div class="container">
         <h2 id="cta-title" class="cta__title">Not sure where to start?</h2>
@@ -197,7 +246,7 @@
         </div>
         <div class="col-6 col-md-3">
           <h2 class="footer-title">Pages</h2>
-          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lookbook.html">Lookbook</a></li><li><a href="quiz.html">Style Quiz</a></li></ul>
+          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lookbook.html">Lookbook</a></li><li><a href="quiz.html">Style Quiz</a></li><li><a href="game.html">Look Game</a></li><li><a href="planner.html">Planner</a></li><li><a href="booking.html">Booking</a></li><li><a href="studio.html">Studio</a></li><li><a href="account.html">Account</a></li></ul>
         </div>
         <div class="col-6 col-md-4">
           <h2 class="footer-title">Wardrobes</h2>
@@ -209,9 +258,11 @@
           </ul>
         </div>
       </div>
-      <p class="footer-credits">Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project. Fonts: Bodoni Moda and Jost from Google Fonts. Built with HTML, CSS and Bootstrap 5.3.</p>
+      <p class="footer-credits">Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project. Fonts: Bodoni Moda and Jost from Google Fonts. Built with HTML, CSS, JavaScript, jQuery and Bootstrap 5.3.</p>
     </div>
   </footer>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

@@ -11,11 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..800;1,6..96,500..800&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/studio.css" rel="stylesheet">
+  <link href="css/lookbook.css" rel="stylesheet">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+    <nav class="navbar navbar-expand-xl" aria-label="Main navigation">
       <div class="container">
         <a class="navbar-brand brand" href="index.html" aria-label="Lis, home">
           <img src="img/mark-gold.svg" alt="" width="30" height="20">
@@ -29,6 +31,11 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="lookbook.html" aria-current="page">Lookbook</a></li>
           <li class="nav-item"><a class="nav-link" href="quiz.html">Style Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="game.html">Look Game</a></li>
+          <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--studio" href="studio.html">Studio</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--account" href="account.html">Account</a></li>
           </ul>
         </div>
       </div>
@@ -52,6 +59,7 @@
             <li class="nav-item"><a class="nav-link" href="#europe">Europe</a></li>
             <li class="nav-item"><a class="nav-link" href="#america">America</a></li>
             <li class="nav-item"><a class="nav-link" href="#kazakh">Qazaqstan</a></li>
+            <li class="nav-item"><a class="nav-link nav-link--timeline" href="#timeline">Timeline</a></li>
           </ul>
         </nav>
       </div>
@@ -249,6 +257,59 @@
       </div>
     </section>
 
+    <section id="timeline" class="section timeline-section" aria-labelledby="timeline-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow eyebrow--gold">A century of style</p>
+          <h2 id="timeline-title" class="section__title">The fashion timeline</h2>
+          <p class="timeline-lead">The story behind every look: what changed, who changed it and why it still matters. Filter by wardrobe or period and save the looks you love to your account.</p>
+        </header>
+
+        <div class="timeline-tools" role="search" aria-label="Filter the timeline">
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-lg-6">
+              <fieldset>
+                <legend class="form-label">Wardrobe</legend>
+                <div class="pill-group" id="tlWardrobe"></div>
+              </fieldset>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <label for="tlPeriod" class="form-label">Period</label>
+              <select id="tlPeriod" class="form-select">
+                <option value="all">All periods</option>
+                <option value="early">Before 1960</option>
+                <option value="swinging">1960s and 1970s</option>
+                <option value="late">1980s and 1990s</option>
+                <option value="heritage">Heritage and today</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+              <label for="tlSort" class="form-label">Order</label>
+              <select id="tlSort" class="form-select">
+                <option value="asc">Oldest first</option>
+                <option value="desc">Newest first</option>
+              </select>
+            </div>
+            <div class="col-12 d-flex flex-wrap justify-content-between align-items-center gap-2">
+              <div class="form-check mb-0">
+                <input id="tlSaved" type="checkbox" class="form-check-input">
+                <label for="tlSaved" class="form-check-label">Only my saved looks</label>
+              </div>
+              <p class="timeline-count mb-0" id="tlCount" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+
+        <ol class="timeline" id="timelineList"></ol>
+        <div id="tlEmpty" class="empty-state" hidden>
+          <img src="img/ornament-ink.svg" alt="" width="120" height="14">
+          <h3 class="empty-state__title">Nothing found on the timeline</h3>
+          <p id="tlEmptyText"></p>
+          <button type="button" class="btn btn-lis" id="tlReset">Show every look</button>
+        </div>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="glance-title">
       <div class="container">
         <header class="section__head">
@@ -334,7 +395,7 @@
         </div>
         <div class="col-6 col-md-3">
           <h2 class="footer-title">Pages</h2>
-          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lookbook.html">Lookbook</a></li><li><a href="quiz.html">Style Quiz</a></li></ul>
+          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lookbook.html">Lookbook</a></li><li><a href="quiz.html">Style Quiz</a></li><li><a href="game.html">Look Game</a></li><li><a href="planner.html">Planner</a></li><li><a href="booking.html">Booking</a></li><li><a href="studio.html">Studio</a></li><li><a href="account.html">Account</a></li></ul>
         </div>
         <div class="col-6 col-md-4">
           <h2 class="footer-title">Wardrobes</h2>
@@ -346,9 +407,13 @@
           </ul>
         </div>
       </div>
-      <p class="footer-credits">Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project. Fonts: Bodoni Moda and Jost from Google Fonts. Built with HTML, CSS and Bootstrap 5.3.</p>
+      <p class="footer-credits">Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project. Fonts: Bodoni Moda and Jost from Google Fonts. Built with HTML, CSS, JavaScript, jQuery and Bootstrap 5.3.</p>
     </div>
   </footer>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/looks-data.js"></script>
+  <script src="js/lookbook.js"></script>
 </body>
 </html>

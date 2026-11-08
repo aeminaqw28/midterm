@@ -11,11 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..800;1,6..96,500..800&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/lab.css" rel="stylesheet">
+  <link href="css/studio.css" rel="stylesheet">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+    <nav class="navbar navbar-expand-xl" aria-label="Main navigation">
       <div class="container">
         <a class="navbar-brand brand" href="index.html" aria-label="Lis, home">
           <img src="img/mark-gold.svg" alt="" width="30" height="20">
@@ -29,6 +31,11 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
           <li class="nav-item"><a class="nav-link active" href="quiz.html" aria-current="page">Style Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="game.html">Look Game</a></li>
+          <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--studio" href="studio.html">Studio</a></li>
+          <li class="nav-item"><a class="nav-link nav-link--account" href="account.html">Account</a></li>
           </ul>
         </div>
       </div>
@@ -48,20 +55,21 @@
       <div class="container">
         <div class="row gy-5 gx-lg-5">
           <div class="col-12 col-lg-7">
-            <div id="thanks" class="thanks" role="status">
-              <strong>Thank you!</strong> Your answers were received. This is a student project, so nothing is stored or sent.
-            </div>
-            <form class="quiz" action="quiz.html#thanks" method="get">
+            <div id="quizResult" class="quiz-result" role="status" aria-live="polite"></div>
+            <form id="quizForm" class="quiz" novalidate>
+              <p id="quizSummary" class="error-summary" role="alert" tabindex="-1"></p>
               <fieldset class="quiz__group">
                 <legend>About you</legend>
                 <div class="row g-3">
                   <div class="col-12 col-md-6">
                     <label for="name" class="form-label">Full name</label>
-                    <input id="name" name="name" type="text" class="form-control" placeholder="Aigerim Nurlan" autocomplete="name" required>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="Aigerim Nurlan" autocomplete="name" aria-describedby="name-error">
+                    <p id="name-error" class="field-error"></p>
                   </div>
                   <div class="col-12 col-md-6">
                     <label for="email" class="form-label">Email</label>
-                    <input id="email" name="email" type="email" class="form-control" placeholder="you@example.com" autocomplete="email" required>
+                    <input id="email" name="email" type="email" class="form-control" placeholder="you@example.com" autocomplete="email" aria-describedby="email-error">
+                    <p id="email-error" class="field-error"></p>
                   </div>
                 </div>
               </fieldset>
@@ -78,12 +86,13 @@
                   <input type="radio" class="btn-check" name="place" id="p-kazakh" value="kazakh">
                   <label class="btn btn-lis-outline" for="p-kazakh">Qazaqstan</label>
                 </div>
+                <p id="place-error" class="field-error"></p>
               </fieldset>
 
               <fieldset class="quiz__group">
                 <legend>2. Which decade do you want to wear?</legend>
                 <label for="decade" class="form-label">Choose an era</label>
-                <select id="decade" name="decade" class="form-select" required>
+                <select id="decade" name="decade" class="form-select" aria-describedby="decade-error">
                   <option value="" selected disabled>Select a decade</option>
                   <optgroup label="Early and mid century">
                     <option>1920s</option>
@@ -98,14 +107,15 @@
                     <option>1990s</option>
                   </optgroup>
                   <optgroup label="Heritage">
-                    <option>Qazaqstan traditional</option>
-                    <option>Qazaqstan today</option>
+                    <option value="Heritage">Qazaqstan traditional</option>
+                    <option value="Today">Qazaqstan today</option>
                   </optgroup>
                 </select>
+                <p id="decade-error" class="field-error"></p>
               </fieldset>
 
-              <fieldset class="quiz__group">
-                <legend>3. What is the occasion?</legend>
+              <fieldset class="quiz__group" id="occasionGroup">
+                <legend>3. What is the occasion? <span class="legend-hint">(choose at least one)</span></legend>
                 <div class="row row-cols-2 row-cols-md-3 g-2">
                   <div class="col"><div class="form-check"><input class="form-check-input" type="checkbox" name="occasion" id="o-day" value="everyday"><label class="form-check-label" for="o-day">Everyday</label></div></div>
                   <div class="col"><div class="form-check"><input class="form-check-input" type="checkbox" name="occasion" id="o-party" value="party"><label class="form-check-label" for="o-party">Party</label></div></div>
@@ -113,12 +123,14 @@
                   <div class="col"><div class="form-check"><input class="form-check-input" type="checkbox" name="occasion" id="o-work" value="work"><label class="form-check-label" for="o-work">Work</label></div></div>
                   <div class="col"><div class="form-check"><input class="form-check-input" type="checkbox" name="occasion" id="o-travel" value="travel"><label class="form-check-label" for="o-travel">Travel</label></div></div>
                 </div>
+                <p id="occasion-error" class="field-error"></p>
               </fieldset>
 
               <fieldset class="quiz__group">
                 <legend>4. How bold do you feel?</legend>
                 <label for="bold" class="form-label">From quiet to loud</label>
-                <input id="bold" name="bold" type="range" class="form-range" min="1" max="5" value="3">
+                <input id="bold" name="bold" type="range" class="form-range" min="1" max="5" value="3" aria-describedby="boldValue">
+                <p class="field-hint" id="boldValue">Level 3 of 5: balanced</p>
                 <div class="range-labels" aria-hidden="true"><span>Quiet</span><span>Loud</span></div>
               </fieldset>
 
@@ -133,7 +145,9 @@
                   </div>
                   <div class="col-12 col-md-8">
                     <label for="note" class="form-label">Anything we should know?</label>
-                    <textarea id="note" name="note" class="form-control" rows="3" placeholder="Favourite colour, an event date, a piece you love"></textarea>
+                    <textarea id="note" name="note" class="form-control" rows="3" maxlength="300" placeholder="Favourite colour, an event date, a piece you love" aria-describedby="note-count note-error"></textarea>
+                    <p class="field-hint text-end" id="note-count">0 / 300</p>
+                    <p id="note-error" class="field-error"></p>
                   </div>
                 </div>
               </fieldset>
@@ -182,7 +196,7 @@
         </div>
         <div class="col-6 col-md-3">
           <h2 class="footer-title">Pages</h2>
-          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lookbook.html">Lookbook</a></li><li><a href="quiz.html">Style Quiz</a></li></ul>
+          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="lookbook.html">Lookbook</a></li><li><a href="quiz.html">Style Quiz</a></li><li><a href="game.html">Look Game</a></li><li><a href="planner.html">Planner</a></li><li><a href="booking.html">Booking</a></li><li><a href="studio.html">Studio</a></li><li><a href="account.html">Account</a></li></ul>
         </div>
         <div class="col-6 col-md-4">
           <h2 class="footer-title">Wardrobes</h2>
@@ -194,9 +208,14 @@
           </ul>
         </div>
       </div>
-      <p class="footer-credits">Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project. Fonts: Bodoni Moda and Jost from Google Fonts. Built with HTML, CSS and Bootstrap 5.3.</p>
+      <p class="footer-credits">Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project. Fonts: Bodoni Moda and Jost from Google Fonts. Built with HTML, CSS, JavaScript, jQuery and Bootstrap 5.3.</p>
     </div>
   </footer>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/looks-data.js"></script>
+  <script src="js/quiz.js"></script>
 </body>
 </html>
