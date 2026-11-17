@@ -21,7 +21,7 @@
   /* ---------- helpers ---------- */
 
   function money(n) {
-    return "$" + n.toFixed(2);
+    return "$" + (Number.isInteger(n) ? n : n.toFixed(2));
   }
 
   function wardrobeLabel(id) {
@@ -403,9 +403,9 @@
     renderPieces();
     prefill();
     if (member) {
-      notify("Order " + order.code + " is confirmed and saved to your account.", { href: "account.html", text: "View orders" });
+      notify("Order " + order.code + " is saved to your account.", { href: "account.html", text: "View orders" }, "Order confirmed");
     } else {
-      notify("Order " + order.code + " is confirmed. Create an account to keep track of it.", { href: "account.html", text: "Sign up" });
+      notify("Order " + order.code + " is placed. Create an account to keep track of it.", { href: "account.html", text: "Sign up" }, "Order confirmed");
     }
   });
 
@@ -756,7 +756,7 @@
     document.getElementById("rqNotes-count").textContent = "0 / 500";
     updateEstimate();
     prefill();
-    notify("Design request " + request.code + " sent to " + request.designer + ".", member ? { href: "account.html", text: "See it in your account" } : null);
+    notify("Request " + request.code + " is with " + request.designer + ".", member ? { href: "account.html", text: "See it in your account" } : null, "Design request sent");
     smoothScrollTo("#requestResult");
   });
 

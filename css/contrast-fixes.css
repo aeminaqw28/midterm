@@ -1,0 +1,146 @@
+/* Contrast corrections for dark theme and mixed light/dark components.
+
+/* Light gradient hero areas must keep dark typography, even in dark mode. */
+[data-theme="dark"] .account-guest,
+[data-theme="dark"] .account-guest .page-head,
+[data-theme="dark"] .member-head,
+[data-theme="dark"] .studio-head {
+  color: #20232b !important;
+}
+[data-theme="dark"] .account-guest .page-head__title,
+[data-theme="dark"] .account-guest .page-head__lead,
+[data-theme="dark"] .account-guest .perks,
+[data-theme="dark"] .member-head .page-head__title,
+[data-theme="dark"] .member-head .page-head__lead,
+[data-theme="dark"] .studio-head .page-head__title,
+[data-theme="dark"] .studio-head .page-head__lead,
+[data-theme="dark"] .studio-head .studio-facts li {
+  color: #20232b !important;
+}
+[data-theme="dark"] .account-guest .perks li::before { filter: none; }
+
+/* White / cream cards need dark text, not the light dark-theme token. Also fix lightbox panel in dark mode. */
+[data-theme="dark"] .kcard,
+[data-theme="dark"] .kcard *,
+[data-theme="dark"] .tl-facts,
+[data-theme="dark"] .tl-facts *,
+[data-theme="dark"] .saved-card,
+[data-theme="dark"] .saved-card *,
+[data-theme="dark"] .stats__item:not(:first-child),
+[data-theme="dark"] .stats__item:not(:first-child) *,
+[data-theme="dark"] .ticket,
+[data-theme="dark"] .ticket *,
+[data-theme="dark"] .checkout,
+[data-theme="dark"] .checkout *,
+[data-theme="dark"] .lightbox__panel,
+[data-theme="dark"] .lightbox__panel * {
+  color: #20232b !important;
+}
+[data-theme="dark"] .kcard,
+[data-theme="dark"] .tl-facts,
+[data-theme="dark"] .saved-card,
+[data-theme="dark"] .ticket,
+[data-theme="dark"] .lightbox__panel {
+  background-color: #fffaf0 !important;
+}
+[data-theme="dark"] .lightbox__close {
+  color: #e3b84d !important;
+  background-color: #14161c !important;
+}
+[data-theme="dark"] .lightbox .btn-lis {
+  background-color: #14161c !important;
+  border-color: #14161c !important;
+  color: #f6efe3 !important;
+}
+
+/* Planner board cards and headings. */
+[data-theme="dark"] .column,
+[data-theme="dark"] .column--doing,
+[data-theme="dark"] .column--done {
+  color: #20232b !important;
+}
+[data-theme="dark"] .column__title,
+[data-theme="dark"] .kcard__title,
+[data-theme="dark"] .kcard__details,
+[data-theme="dark"] .kcard__details * {
+  color: #20232b !important;
+}
+[data-theme="dark"] .column__count { color: #fffaf0 !important; }
+
+/* Success / error feedback uses pale backgrounds, so use dark foregrounds. */
+[data-theme="dark"] .planner__message.is-success,
+[data-theme="dark"] .game__message.is-success,
+[data-theme="dark"] .form-success,
+[data-theme="dark"] .quiz-result .alert-success,
+[data-theme="dark"] .alert-success {
+  color: #174b25 !important;
+}
+[data-theme="dark"] .planner__message.is-error,
+[data-theme="dark"] .game__message.is-error,
+[data-theme="dark"] .alert-danger {
+  color: #741f18 !important;
+}
+[data-theme="dark"] .planner__message.is-success *,
+[data-theme="dark"] .game__message.is-success *,
+[data-theme="dark"] .form-success *,
+[data-theme="dark"] .alert-success * { color: inherit !important; }
+
+/* Floating notification: dark card with readable warm-white text. */
+[data-theme="dark"] .notice { background: #242832 !important; border-color: #f4eee2 !important; }
+[data-theme="dark"] .notice__title,
+[data-theme="dark"] .notice__text,
+[data-theme="dark"] .notice__link { color: #f6efe3 !important; }
+[data-theme="dark"] .notice__close { color: #f6efe3 !important; border-color: rgba(246,239,227,.45) !important; }
+
+/* Shopping bag is always a dark panel. */
+[data-theme="dark"] .bag,
+[data-theme="dark"] .bag * { color: #f6efe3; }
+[data-theme="dark"] .bag .bag__title,
+[data-theme="dark"] .bag .bag__price,
+[data-theme="dark"] .bag .bag__hint,
+[data-theme="dark"] .bag .bag__total dt,
+[data-theme="dark"] .bag .bag__total dd,
+[data-theme="dark"] .bag .bag__count { color: #e3b84d !important; }
+[data-theme="dark"] .bag .qty__btn { color: #e3b84d !important; }
+[data-theme="dark"] .bag .qty__btn:hover { color: #171a20 !important; }
+
+/* Account tabs: inactive tab is on a dark strip; active tab is gold. */
+.auth__tab { color: #f6efe3 !important; }
+.auth__tab.is-active { color: #171a20 !important; }
+[data-theme="dark"] .auth__tab { color: #f6efe3 !important; }
+[data-theme="dark"] .auth__tab.is-active { color: #171a20 !important; }
+[data-theme="dark"] .auth__panel { color: #f6efe3; }
+[data-theme="dark"] .auth__panel label,
+[data-theme="dark"] .auth__panel .form-text,
+[data-theme="dark"] .auth__panel .field-hint { color: #e7e0d4 !important; }
+
+/* Secondary text on dark surfaces. */
+[data-theme="dark"] .bag__sums dt,
+[data-theme="dark"] .bag__empty,
+[data-theme="dark"] .shop__sub,
+[data-theme="dark"] .column__empty { color: #d8d2c7 !important; }
+
+/* Ensure controls and disabled-looking buttons remain legible. */
+[data-theme="dark"] button:disabled,
+[data-theme="dark"] .btn:disabled,
+[data-theme="dark"] .btn.disabled { opacity: .72 !important; }
+[data-theme="dark"] .kcard__btn,
+[data-theme="dark"] .column .btn { color: #20232b !important; }
+
+/* Navbar Studio button active/hover state in dark mode */
+[data-theme="dark"] .navbar .nav-link--studio:hover,
+[data-theme="dark"] .navbar .nav-link--studio.active {
+  color: #171a20 !important;
+}
+
+/* Shop and timeline toolbar text in dark mode */
+[data-theme="dark"] .shop-toolbar,
+[data-theme="dark"] .shop-toolbar label,
+[data-theme="dark"] .shop-toolbar legend,
+[data-theme="dark"] .shop-toolbar .shop-count,
+[data-theme="dark"] .timeline-tools,
+[data-theme="dark"] .timeline-tools label,
+[data-theme="dark"] .timeline-tools legend,
+[data-theme="dark"] .timeline-tools .timeline-count {
+  color: #20232b !important;
+}

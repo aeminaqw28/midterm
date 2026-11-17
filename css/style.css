@@ -1268,3 +1268,136 @@ h1, h2, h3, h4 {
 .arch--europe { background: linear-gradient(160deg, #e8e6f6 0%, #c9c5e6 100%); }
 .arch--america { background: linear-gradient(160deg, #fbeab8 0%, #f2c75c 100%); }
 .arch--kazakh { background: linear-gradient(160deg, #d9eff7 0%, #8fd0e4 100%); }
+
+
+/* Persistent dark theme: colors remain controlled by the same design tokens. */
+:root[data-theme="dark"],
+body[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #f4eee2;
+  --paper: #171a20;
+  --cream: #242832;
+  --gold: #e3b84d;
+  --gold-deep: #d5a52e;
+  --shadow: 0 0.65rem 1.5rem rgba(0, 0, 0, 0.38);
+  --bs-body-color: var(--ink);
+  --bs-body-bg: var(--paper);
+  --bs-border-color: rgba(244, 238, 226, 0.2);
+}
+
+:root[data-theme="dark"] body,
+body[data-theme="dark"] {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .site-header,
+[data-theme="dark"] .site-footer {
+  background: #0d1015;
+}
+
+[data-theme="dark"] .navbar .nav-link { color: var(--ink); }
+[data-theme="dark"] .navbar .nav-link:hover,
+[data-theme="dark"] .navbar .nav-link.active { color: var(--gold); }
+[data-theme="dark"] .navbar-toggler-icon { filter: invert(1); }
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .form-text,
+[data-theme="dark"] .wardrobe__text,
+[data-theme="dark"] .look__story,
+[data-theme="dark"] .piece__description,
+[data-theme="dark"] .designer__bio,
+[data-theme="dark"] .booking__hint { color: #c2c0ba !important; }
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] textarea,
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="dark"] select {
+  background-color: #20242d;
+  border-color: #59606b;
+  color: var(--ink);
+}
+[data-theme="dark"] .form-control::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder { color: #a9a9a4; }
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus,
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus {
+  background-color: #20242d;
+  color: var(--ink);
+}
+[data-theme="dark"] .accordion,
+[data-theme="dark"] .accordion-item,
+[data-theme="dark"] .accordion-button,
+[data-theme="dark"] .card,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .dropdown-menu {
+  --bs-accordion-bg: var(--cream);
+  --bs-accordion-color: var(--ink);
+  background-color: var(--cream);
+  color: var(--ink);
+  border-color: rgba(244, 238, 226, 0.2);
+}
+[data-theme="dark"] .accordion-button:not(.collapsed) { color: var(--gold); }
+[data-theme="dark"] .table { --bs-table-color: var(--ink); --bs-table-bg: transparent; }
+[data-theme="dark"] .theme-toggle {
+  border-color: rgba(244, 238, 226, 0.5);
+  color: var(--ink);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  margin: 0.35rem 0 0.35rem 0.75rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(246, 239, 227, 0.55);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--paper);
+  font: 500 0.75rem/1.2 var(--font-body);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.theme-toggle:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+@media (max-width: 1199.98px) {
+  .theme-toggle { margin-left: 0; }
+}
+
+[data-theme="dark"] {
+  --paris-tint: #342725;
+  --europe-tint: #29283a;
+  --america-tint: #39311f;
+  --kazakh-tint: #20343b;
+  --sky: #244452;
+  --red: #d56c5f;
+}
+[data-theme="dark"] .region-nav {
+  background: #20242d;
+  border-color: rgba(244, 238, 226, 0.2);
+}
+[data-theme="dark"] .look__sub,
+[data-theme="dark"] .lis-table caption,
+[data-theme="dark"] .form-check-label,
+[data-theme="dark"] .field-hint,
+[data-theme="dark"] .page-head__lead {
+  color: #c2c0ba;
+}
+[data-theme="dark"] .lis-table tbody th,
+[data-theme="dark"] .lis-table tbody td {
+  border-color: rgba(244, 238, 226, 0.16);
+}
+[data-theme="dark"] .spotlight {
+  background: #0d1015;
+  color: #eee7db;
+}
+[data-theme="dark"] .region__num {
+  -webkit-text-stroke-color: var(--ink);
+}

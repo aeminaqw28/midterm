@@ -122,29 +122,38 @@ const LisSite = (function () {
   function ensureNotice() {
     if (!document.getElementById("notice")) {
       $("body").append(
-        '<div id="notice" class="notice notice--float" role="status" aria-live="polite">' +
-        '<div class="container notice__inner"><p id="noticeText" class="notice__text"></p>' +
+        '<div id="notice" class="notice" role="status" aria-live="polite">' +
+        '<div class="notice__inner"><div class="notice__body"><p id="noticeTitle" class="notice__title"></p>' +
+        '<p id="noticeText" class="notice__text"></p></div>' +
         '<button type="button" class="notice__close" id="noticeClose" aria-label="Close notification">&times;</button></div></div>'
       );
+    }
+    if (!document.getElementById("noticeTitle")) {
+      $("#noticeText").before('<p id="noticeTitle" class="notice__title"></p>').parent().addClass("notice__body");
     }
     $("#noticeClose").off("click").on("click", hideNotice);
   }
 
-  // message: plain text; link: optional { href, text }
-  function notify(message, link) {
+  function notify(message, link, title) {
     ensureNotice();
+    $("#noticeTitle").text(title || "").toggle(!!title);
     const $text = $("#noticeText").text(message);
     if (link) {
       $text.append(" ", $("<a>", { href: link.href, text: link.text, class: "notice__link" }));
     }
+    const delay = link ? 7000 : 5000;
+    const $notice = $("#notice");
+    $notice.removeClass("is-running").css("--notice-time", delay + "ms");
     clearTimeout(noticeTimer);
-    // stop(true, true) keeps fast repeated clicks from stacking animations
-    $("#notice").stop(true, true).slideDown(300);
-    noticeTimer = setTimeout(hideNotice, link ? 7000 : 5000);
+    $notice.stop(true, true).css({ display: "block", opacity: 0, marginTop: "-0.8rem" })
+      .animate({ opacity: 1, marginTop: 0 }, 300);
+    void $notice[0].offsetWidth;
+    $notice.addClass("is-running");
+    noticeTimer = setTimeout(hideNotice, delay);
   }
 
   function hideNotice() {
-    $("#notice").stop(true, true).slideUp(250);
+    $("#notice").stop(true, true).fadeOut(220).removeClass("is-running");
   }
 
   function scrollTo(target) {
@@ -180,7 +189,34 @@ const LisSite = (function () {
     });
   }
 
+  function initTheme() {
+    const key = "lis-theme";
+    const stored = LisStore.get(key, "light");
+    const initial = stored === "dark" ? "dark" : "light";
+
+    function apply(theme) {
+      const dark = theme === "dark";
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+      document.body.dataset.theme = dark ? "dark" : "light";
+      document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+        button.textContent = dark ? "Light mode" : "Dark mode";
+        button.setAttribute("aria-pressed", String(dark));
+        button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      });
+    }
+
+    apply(initial);
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        LisStore.set(key, next);
+        apply(next);
+      });
+    });
+  }
+
   $(function () {
+    initTheme();
     updateAccountLink();
     backToTop();
     ensureNotice();
