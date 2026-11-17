@@ -42,10 +42,12 @@
     </nav>
   </header>
 
-  <!-- jQuery notification banner: slides down after a successful order or request -->
   <div id="notice" class="notice" role="status" aria-live="polite">
-    <div class="container notice__inner">
-      <p id="noticeText" class="notice__text"></p>
+    <div class="notice__inner">
+      <div class="notice__body">
+        <p id="noticeTitle" class="notice__title"></p>
+        <p id="noticeText" class="notice__text"></p>
+      </div>
       <button type="button" class="notice__close" id="noticeClose" aria-label="Close notification">&times;</button>
     </div>
   </div>
@@ -75,11 +77,11 @@
     </section>
 
     <!-- ============ 1. SHOP ============ -->
-    <section id="shop" class="section section--flush shop" aria-labelledby="shop-title">
+    <section id="shop" class="section shop" aria-labelledby="shop-title">
       <div class="container">
-        <header class="section__head">
-          <p class="eyebrow">01 &middot; Ready to cut</p>
+        <header class="section__head shop__head">
           <h2 id="shop-title" class="section__title">Shop the pieces</h2>
+          <p class="shop__sub">Ready to cut: every piece is sewn to order in Almaty.</p>
         </header>
 
         <div class="shop-toolbar" role="search" aria-label="Filter pieces">
