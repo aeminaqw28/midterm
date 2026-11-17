@@ -1,101 +1,73 @@
-# Lis Styling Studio (Endterm)
+# Lis Styling Studio
 
-A fictional styling studio rooted in Kazakhstan, with four wardrobes: Paris, Europe, America and Qazaqstan.
-Front-end only: HTML, CSS, Bootstrap 5.3, JavaScript and jQuery 3.7. There is no backend; accounts, orders and saved looks live in the browser's localStorage.
+From a lookbook to a working product: shop, custom design studio, account, timeline, and interactive styling games.  
+**Course:** Web Technologies 1 (Front End)  
+**Author:** Amina Kanybek (Group IT-2506)  
 
-## How to run
+## Live Links
+- **GitHub Repository:** https://github.com/aeminaqw28/midterm.git
+- **Live Website (GitHub Pages):** https://aeminaqw28.github.io/midterm/
 
-Open `index.html` in a browser, or serve the folder (for example `python -m http.server`) and open `http://localhost:8000`.
+## Project Overview
+**Lis Styling Studio** is an eight-page responsive front-end fashion and styling website built with HTML5, CSS3, JavaScript, jQuery, and Bootstrap 5. The project brings together historical fashion lookbooks, an e-commerce studio and custom design commission system, interactive styling activities, and a client-side member account area.
 
-## Pages
+## Pages & Features
+1. **Home (`index.html`):** Visual introduction to the studio's four wardrobes (Paris, Europe, America, Qazaqstan) and historical fashion eras.
+2. **Studio & Shop (`studio.html`):**
+   - Filterable and searchable catalog of 12 ready-to-cut pieces across four wardrobes.
+   - Interactive story lightbox modal (*"Read the story"*) with historical background for each piece.
+   - Dynamic shopping bag with item quantity controls, automatic 10% bundle discount calculation (3+ pieces), delivery city selection, and checkout validation.
+   - Custom design commission form with designer selection, rush-order fee calculation (+25%), and reference image upload preview.
+3. **Lookbook (`lookbook.html`):** Curated fashion timeline featuring eight complete outfits, styling details, historical notes, and one-tap saving to the member account.
+4. **Style Quiz (`quiz.html`):** Interactive multi-question quiz that calculates and matches the visitor with their signature fashion era.
+5. **Look Game (`game.html`):** Interactive era-guessing styling game with live score tracking and best-score persistence.
+6. **Wardrobe Planner (`planner.html`):** Interactive Kanban board (*Want to try*, *Styling now*, *Worn*) with search, wardrobe filtering, priority sorting, and progress tracking.
+7. **Booking (`booking.html`):** Consultation and fitting session booking form with field validation and confirmation tickets.
+8. **Account (`account.html`):** Client-side Sign Up, Log In, and Member Profile dashboard powered by `localStorage` (stores saved looks, order history, quiz match, and game high scores; clearly labeled as a browser-only demo).
 
-| Page | What it does |
-|---|---|
-| `index.html` | Home: hero, four wardrobes, "New this season" links to every new feature |
-| `lookbook.html` | Eight looks by wardrobe, plus the data-driven **fashion timeline** (filter, sort, read more, save look) |
-| `quiz.html` | Style quiz with validation; scores every look and shows your best match inline |
-| `game.html` | "Earlier or later?" game with lives, streak, score multiplier, accuracy, best score and history notes |
-| `planner.html` | Look planner board (from the midterm labs) |
-| `booking.html` | Session booking with live ticket preview (from the midterm labs) |
-| `studio.html` | **Studio**: shop with bag and checkout, plus the custom design request with designer choice and photo upload |
-| `account.html` | **Account**: sign up / log in, saved looks, orders, design requests, profile |
+## Final Release Improvements
+- **Light & Dark Theme Support:** Persistent theme toggle across all pages using CSS custom properties and `localStorage`.
+- **Contrast & Accessibility Fixes (`css/contrast-fixes.css`):** Resolved contrast issues in dark mode across light-background cards, modals (including the *"Read the story"* lightbox), shop filter toolbars, validation error inputs, planner columns, and account tabs.
+- **Responsive Design:** Tested and adapted across mobile (`375px`), tablet (`768px`), and desktop (`1280px+`) viewports.
 
-## Files
-
+## Project File Structure
+```text
+lis-styling-studio/
+├── index.html
+├── studio.html
+├── lookbook.html
+├── booking.html
+├── game.html
+├── quiz.html
+├── planner.html
+├── account.html
+├── README.md
+├── css/
+│   ├── style.css
+│   ├── studio.css
+│   ├── lookbook.css
+│   ├── lab.css
+│   ├── account.css
+│   └── contrast-fixes.css
+├── js/
+│   ├── site.js
+│   ├── studio.js
+│   ├── studio-data.js
+│   ├── lookbook.js
+│   ├── looks-data.js
+│   ├── booking.js
+│   ├── game.js
+│   ├── quiz.js
+│   ├── planner.js
+│   ├── account.js
+│   └── validate.js
+└── img/
+    └── [Custom SVG illustrations and brand ornaments]
 ```
-css/style.css        design tokens, base layout, navigation, home
-css/lab.css          forms, game, planner, booking (midterm labs + endterm game styles)
-css/studio.css       gradients, shop, bag, commission, lightbox, quiz result
-css/account.css      account page
-css/lookbook.css     fashion timeline
-js/site.js           shared: LisStore, LisAuth (simulated account), LisSite (banner, smooth scroll, back to top)
-js/validate.js       shared validation rules and inline error messages
-js/looks-data.js     LOOKS array (8 objects) used by lookbook, game, quiz and account
-js/studio-data.js    PIECES (12), DESIGNERS (8), GARMENTS (7)
-js/studio.js         shop, bag, checkout, commission form
-js/lookbook.js       fashion timeline
-js/game.js           look game
-js/quiz.js           style quiz
-js/account.js        account page
-```
 
-## Endterm criteria checklist
-
-**1. Responsiveness and accessibility**
-- Tested at 375, 768 and 1280 px with no horizontal scroll.
-- Sticky header on every page with the active page highlighted (underline on desktop, gold bar in the phone menu).
-- Every image has alt text (decorative ones use `alt=""`), headings go h1 → h2 → h3, and there is a skip link.
-- Visible `:focus-visible` styles on links, buttons, inputs, cards, tabs and the dropzone.
-- The lightbox keeps keyboard focus inside and closes with Esc; the account tabs work with the arrow keys.
-
-**2. Forms and validation** (errors appear under each field and disappear when fixed; no `alert()`)
-- Studio design request: up to 14 fields. It checks name, email, Kazakhstan phone pattern, a date at least 14 days ahead, garment, size or custom measurements (number ranges), a budget that covers the estimate, 1–3 images up to 5 MB, a description of at least 20 characters and consent.
-- Account sign-up: 8 fields, including date of birth (age 14+), password strength (8+ characters, capital, number, symbol) with a meter, and a matching repeat password.
-- Also validated: checkout (5 fields), log in, profile edit and the style quiz.
-- On success every form clears and shows an inline success message or ticket.
-
-**3. JavaScript functionality**
-- Arrays of objects rendered with DOM methods (`createElement`, `append`):
-  - `PIECES` (12 objects, 10 properties each)
-  - `DESIGNERS` (8)
-  - `LOOKS` (8 objects, 15 properties each)
-- Interactive features:
-  - shop search, filter and sort
-  - bag with quantities
-  - timeline filter, sort and save
-  - quiz matching
-  - game
-- Calculated values:
-  - bag subtotal, 10% look discount, delivery and total
-  - commission estimate with a ×1.25 rush fee
-  - quiz match %
-  - game score with a streak multiplier and accuracy %
-  - years covered by the timeline
-  - total spent on the account page
-- Event-driven (`click`, `input`, `change`, `submit`, `keydown`, drag and drop) with no page reloads.
-- "Nothing found" states for the shop, the timeline, the saved looks, orders and requests.
-
-**4. jQuery effects**
-- Notification banner (`slideDown` / `slideUp`) after orders, requests, saves and log in.
-- Story lightbox (`fadeIn` / `fadeOut`).
-- FAQ accordion and checkout panel (`slideToggle` / `slideDown`).
-- Timeline "read more" (`slideDown`).
-- Smooth scrolling (`animate scrollTop`) and a back-to-top button.
-- Staggered card fade-in (`animate`), floating "+20" score (`animate`), animated quiz match bar.
-- Every animation calls `.stop(true, true)` first, so fast repeated clicks don't stack.
-
-**5. Design**
-- Midterm fonts (Bodoni Moda, Jost), colours and the arch shape are kept everywhere.
-- New gold, ink and cream gradients; designed hover, focus, error, success and empty states.
-
-**6. New features**
-- Fashion history: a timeline with a key moment, a story and a styling tip per look; history notes in the game and the shop lightbox.
-- Game: score, multiplier, accuracy and a best score saved to the account (or the browser).
-- Account: simulated sign up and log in in localStorage; saved looks, orders, requests and profile.
-- Store and custom order studio: a shop with totals and an imagined order, plus an upload-idea request with designer choice, sizes and notes.
-
-## Notes
-
-- The studio designers are fictional characters. Historical facts refer to real designers and events.
-- Account passwords are only lightly hashed in the browser. This is a demo, not real security.
-- Illustrations: original vector artwork generated with AI (Claude, Anthropic) for this student project.
+## Credits & Technologies Used
+- **Bootstrap 5.3.3 (jsDelivr CDN):** Responsive grid system, navigation bar, form controls, and accordion components.
+- **jQuery 3.7.1 (code.jquery.com):** Smooth animations, `slideToggle`, fade transitions, and DOM interactions.
+- **Google Fonts:** *Bodoni Moda* (display headings) and *Jost* (body typography).
+- **Claude (Anthropic):** AI assistance for code structuring, CSS contrast debugging, and custom SVG fashion illustrations (credited in the footer of every page).
+- **Historical Fashion References:** Victoria and Albert Museum (V&A) Collections & The Met Costume Institute.
